@@ -16,7 +16,7 @@ public class delete {
 			// delete 
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate("delete from student where name='satish';");
-			System.out.println("Deleted successfully")
+			System.out.println("Deleted successfully");
 			stmt.close();
 			con.close(); // close connection
 			
