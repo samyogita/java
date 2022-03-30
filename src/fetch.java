@@ -15,8 +15,15 @@ public class fetch {
 			// Message for successful connection
 			System.out.println("Connection successful");
 			// fetch 
-			Statement stmt = con.createStatement();
+			Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			ResultSet rs = stmt.executeQuery("select * from student");
+			if(rs.next == false)
+			{
+				System.out.println("The table is empty");
+			}
+			else
+			{
+				rs.previous();
 			while(rs.next())
 			{
 				System.out.println(rs.getString(1) + rs.getString(2) + rs.getString(3) + rs.getInt(5))
@@ -25,6 +32,7 @@ public class fetch {
 			con.close(); // close connection
 			
 			
+		}
 		}
 		catch(SQLException e)
 		{
